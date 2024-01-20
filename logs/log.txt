@@ -1,0 +1,23 @@
+Authentication and user management --> clerk.com
+        using id        mahilpatel6858@gmail.com
+
+ORM (Object relational model) --> Prisma
+
+User database --> MongoDb
+        using id        mahilpatel6858@gmail.com
+        username :      Mahil 
+        password :      AN3zqbgJvDkiISKQ
+
+Form validation and handlinng --> Zod and react-hook-Form
+
+uploading the server image --> uploadthing
+        using id        mahilpatel6858@gmail.com
+
+state management --> zustand
+
+
+
+--> update the username in the local database
+--> Delete user disable
+
+
