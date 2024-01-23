@@ -19,5 +19,5 @@ state management --> zustand
 
 --> update the username in the local database
 --> Delete user disable
-
-
+--> To sort thr members according to the L,C,E,S
+--> add a refresh button in the manage-members modal

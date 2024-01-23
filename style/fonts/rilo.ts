@@ -1,3 +1,4 @@
+import { Variable } from 'lucide-react'
 import localFont from 'next/font/local'
 
 export const riloSBold = localFont({
@@ -6,3 +7,8 @@ export const riloSBold = localFont({
     display : 'swap',
 })
 
+export const riloLight = localFont({
+    src: '/Rilo/Rilo Light.ttf',
+    variable : '--font-riloLight',
+    display : 'swap'
+})

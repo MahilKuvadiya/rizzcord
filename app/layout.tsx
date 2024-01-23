@@ -6,7 +6,7 @@ import { Clerk } from "@clerk/nextjs/server";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 
 
-import { riloSBold } from "@/style/fonts/rilo";
+import { riloSBold,riloLight } from "@/style/fonts/rilo";
 import { jersey } from "@/style/fonts/jersey";
 import { Variable } from "lucide-react";
 import { ModalProvider } from "@/components/providers/modal-provider";
@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
-        <body className={`${inter.variable} ${jersey.variable} ${riloSBold.variable}`}>
+        <body className={`${inter.variable} ${jersey.variable} ${riloSBold.variable} ${riloLight.variable}`}>
           <ThemeProvider
             attribute="class"
             defaultTheme="dark"

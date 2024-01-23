@@ -21,6 +21,7 @@ module.exports = {
         inter : ['var(--font-inter)'],
         jersey : ['var(--font-jersey)'],
         rilo : ['var(--font-rilo)'],
+        riloLight : ['var(--font-riloLight)']
       },
       colors: {
         border: "hsl(var(--border))",
