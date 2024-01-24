@@ -5,7 +5,8 @@ import CreateServerModal from "../modals/create-server-modal"
 import {InviteModal} from "../modals/invite-modal";
 import EditServerModal from "../modals/edit-server-modal";
 import ManageMembersModal from "../modals/manage-members-modal";
-import CreateChannel from "../modals/create-channel";
+import CreateChannel from "../modals/create-channel-modal";
+import LeaveServer from "../modals/leave-server-modal";
 
 export function ModalProvider() {
 
@@ -26,6 +27,7 @@ export function ModalProvider() {
             <EditServerModal />
             <ManageMembersModal />
             <CreateChannel />
+            <LeaveServer />
         </>
     )
 }
