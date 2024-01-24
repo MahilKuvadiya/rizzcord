@@ -66,7 +66,8 @@ export const ServerHeader = ({
                     <DropdownMenuSeparator className="bg-pastel-third ml-3 mr-3 rounded"/>
                 )}
                 {isLeader && (
-                    <DropdownMenuItem className="px-3 py-2 cursor-pointer text-sm font-jersey text-red-600">
+                    <DropdownMenuItem className="px-3 py-2 cursor-pointer text-sm font-jersey text-red-600"
+                    onClick={() => onOpen('deleteServer',{ server })}>
                     Delete server
                     <Trash2 className="ml-auto h-4 w-4"/>
                 </DropdownMenuItem>

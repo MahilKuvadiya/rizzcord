@@ -17,12 +17,12 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 
 
-const LeaveServer = () => {
+const DeleteServer = () => {
   const {isOpen ,onClose , type , data} = useModal()
     const router = useRouter();
 
   const { server } = data;
-  const isModalOpen = isOpen && type === "leaveServer";
+  const isModalOpen = isOpen && type === "deleteServer";
 
   const [isLoading,setisLoading] = useState(false);
 
@@ -30,7 +30,7 @@ const LeaveServer = () => {
     try {
         setisLoading(true);
 
-        const response = await axios.patch(`/api/servers/${server?.id}/leave-server`)
+        const response = await axios.delete(`/api/servers/${server?.id}/delete-server`)
 
         onClose();
         router.refresh();
@@ -47,11 +47,12 @@ const LeaveServer = () => {
       <DialogContent className="space-y-0 bg-pastel-primary text-pastel-fourth p-0 w-[25%]">
         <DialogHeader className="pt-6 px-6">
           <DialogTitle className="text-center text-2xl font-jersey">
-            Leave server
+            Delete server
           </DialogTitle>
           <hr className=" border-pastel-fourth border-1" />
           <DialogDescription className="text-center font-rilo">
-            Are you sure you want to leave <span className="text-pastel-fourth">{server?.serverName}</span> ?
+            Are you sure you want to Delete <span className='text-pastel-fourth'>{server?.serverName}</span> ?<br />
+            Your data will be permnantly lost.
           </DialogDescription>
         </DialogHeader>
         <DialogFooter className="px-6 py-4 ">
@@ -76,4 +77,4 @@ const LeaveServer = () => {
 };
 
 
-export default LeaveServer
+export default DeleteServer
