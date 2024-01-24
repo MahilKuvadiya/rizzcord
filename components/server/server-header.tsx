@@ -23,7 +23,7 @@ export const ServerHeader = ({
     return ( 
         <DropdownMenu>
             <DropdownMenuTrigger className="focus:outline-none" asChild>
-                <button className="w-full text-md font-jersey font-semibold px-3 flex items-center h-12 border-pastel-third/60
+                <button className="w-full text-md font-rilo font-semibold px-3 flex items-center h-12 border-pastel-third/60
                 dark:border-dark-third border-b-2 bg-pastel-secondary hover:bg-pastel-third/40 transition shadow-md">
                     {server.serverName}
                     <ChevronDown className="h-5 w-5 ml-auto"/>
@@ -56,7 +56,8 @@ export const ServerHeader = ({
                     </DropdownMenuItem>
                 )}
                 {isElder && (
-                    <DropdownMenuItem className="px-3 py-2 cursor-pointer text-sm font-jersey">
+                    <DropdownMenuItem className="px-3 py-2 cursor-pointer text-sm font-jersey"
+                    onClick={() => onOpen('createChannel', { server })}>
                         Create channel
                         <PlusSquare className="ml-auto h-4 w-4"/>
                     </DropdownMenuItem>

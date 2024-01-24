@@ -64,8 +64,9 @@ export const InviteModal = () => {
           <DialogTitle className="text-center text-2xl font-jersey">
             Invite friends
           </DialogTitle>
+          <hr className=" border-pastel-fourth border-1" />
         </DialogHeader>
-        <div className="p-6">
+        <div className="p-6 pt-2">
           <Label
             className="uppercase text-sm font-jersey text-pastel-fourth dark:text-secondary/70"
           >

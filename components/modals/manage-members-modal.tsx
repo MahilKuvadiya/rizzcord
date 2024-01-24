@@ -102,6 +102,7 @@ const ManageMembersModal = () => {
           <DialogTitle className="text-center text-2xl font-jersey">
             Manage Spiders
           </DialogTitle>
+          <hr className=" border-pastel-fourth border-1" />
           <DialogDescription>
             {server?.members?.length} Spiders
           </DialogDescription>
