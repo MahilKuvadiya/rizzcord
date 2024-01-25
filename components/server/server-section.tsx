@@ -35,7 +35,7 @@ export const ServerSection = ({
         <ActionTooltip label="Create channel" side="right">
           <button
             className="text-pastel-fourth"
-            onClick={() => onOpen("createChannel", { server })}
+            onClick={() => onOpen("createChannel", { server, channelType })}
           >
             <Plus className="ml-auto h-4 w-4 " />
           </button>
