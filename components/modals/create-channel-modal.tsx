@@ -127,16 +127,18 @@ const CreateChannel = () => {
                     >
                         <FormControl>
                             <SelectTrigger
-                            className="bg-pastel-secondary border-2 border-pastel-fourth focus-visible:ring-0 text-pastel-fourth font-semibold focus-visible:ring-offset-0">
+                            className="bg-pastel-secondary border-2 border-pastel-fourth focus-visible:ring-0 text-pastel-third font-semibold font-jersey focus-visible:ring-offset-0">
                                 <SelectValue placeholder='Select a channel type'/>
                             </SelectTrigger>
                         </FormControl>
                         <FormMessage className="font-rilo"/>
-                        <SelectContent>
+                        <SelectContent className="bg-pastel-secondary font-jersey text-pastel-third">
                             {Object.values(ChannelType).map((type) => (
                                 <SelectItem 
+                                className="hover:bg-pastel-third focus-visible:ring-0 focus-visible:ring-offset-0"
                                 key={type}
-                                value={type}>
+                                value={type}
+                                >
                                     {type}
                                 </SelectItem>
                             ))}

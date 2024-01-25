@@ -21,3 +21,4 @@ state management --> zustand
 --> Delete user disable
 --> To sort thr members according to the L,C,E,S
 --> add a refresh button in the manage-members modal
+--> Backspace not working in the search bar

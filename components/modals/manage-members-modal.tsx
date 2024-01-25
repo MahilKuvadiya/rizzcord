@@ -41,7 +41,7 @@ const roleIconMap = {
   LEADER: <Crown className="h-4 w-4" />,
   COLEADER: <Croissant className="h-4 w-4" />,
   ELDER: <Wand className="h-4 w-4" />,
-  SPIDER: <MemoryStick className="h-4 w-4" />,
+  SPIDER: null,
 };
 
 const ManageMembersModal = () => {
