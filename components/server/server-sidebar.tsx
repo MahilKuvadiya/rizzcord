@@ -10,6 +10,7 @@ import { Croissant, Crown, Hash, Mic, Video, Wand } from "lucide-react";
 import { ServerSection } from "./server-section";
 import { ServerChannel } from "./server-channel";
 import { ServerMember } from "./server-member";
+import { ServerMemberSection } from "./server-memeber-section";
 
 interface serverSidebarProps {
   serverId: string;
@@ -189,11 +190,9 @@ export const ServerSidebar = async ({ serverId }: serverSidebarProps) => {
             server={server}
             />
             <div>
-              {members.map((member) => (
-                <ServerMember 
-                member={member}
-                server={server}/>
-              ))}
+              <ServerMemberSection 
+              members={members}
+              server={server}/>
             </div>
           </div>
         )}

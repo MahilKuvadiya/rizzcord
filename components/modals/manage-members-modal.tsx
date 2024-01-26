@@ -53,6 +53,23 @@ const ManageMembersModal = () => {
 
   const isModalOpen = isOpen && type === "manageMembers";
 
+
+  //sort members according to the roles
+  const leaderMember = server?.members?.filter(
+    (member) => member.role === MemberRole.LEADER
+  ) || [];
+  const coLeaderMember = server?.members?.filter(
+    (member) => member.role === MemberRole.COLEADER
+  ) || [];
+  const elderMember = server?.members?.filter(
+    (member) => member.role === MemberRole.ELDER
+  ) || [];
+  const spiderMember = server?.members?.filter(
+    (member) => member.role === MemberRole.SPIDER
+  ) || [];
+
+  const sortedMembers = leaderMember.concat(coLeaderMember,elderMember,spiderMember);
+
   const onRoleChange = async (memberId : string , role : MemberRole ) => {
     try { 
       setLoadingId(memberId);
@@ -109,7 +126,7 @@ const ManageMembersModal = () => {
         </DialogHeader>
         <ScrollArea className="mt-4 max-h-[420px] pr-6">
           <div className="space-y-3">
-            {server?.members?.map((member) => (
+            {sortedMembers.map((member) => (
               <div className="flex items-center gap-x-3" key={member.id}>
                 <UserAvatar src={member.profile.imageUrl} />
                 <div className="flex flex-col gap-y-0">
