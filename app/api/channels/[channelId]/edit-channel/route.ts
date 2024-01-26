@@ -10,7 +10,9 @@ export async function PATCH(
     try {
         const profile = await currentProfile();
 
-        const { server } = await req.json();
+        const { serverId , values } = await req.json();
+
+        const { name , type } = values
 
         if(!profile) { 
             return new NextResponse('Unauthorized', { status : 401 })
@@ -20,13 +22,14 @@ export async function PATCH(
             return new NextResponse('Channel ID missing' , {status : 400 })
         }
 
-        if(!server){
+        console.log(serverId,'aac')
+        if(!serverId){
             return new NextResponse("Server prop missing" , { status : 400 })
         }
 
         const response = await db.server.update({
             where : {
-                id : server.id,
+                id : serverId,
                 members : {
                     some : {
                         profileId : profile.id,
@@ -38,10 +41,16 @@ export async function PATCH(
             },
             data: {
                 channels : {
-                    deleteMany : {
-                        id : params.channelId,
-                        channelName : {
-                            not : 'general'
+                    update : {
+                        where : {
+                            id : params.channelId,
+                            channelName : {
+                                not : 'general'
+                            }
+                        },
+                        data : {
+                            channelName : name,
+                            type : type
                         }
                     }
                 }

@@ -29,7 +29,7 @@ const DeleteChannel = () => {
     try {
       setisLoading(true);
 
-      const response = await axios.patch(`/api/channels/${channel?.id}`, {
+      const response = await axios.patch(`/api/channels/${channel?.id}/delete-channel`, {
         server,
       });
 
