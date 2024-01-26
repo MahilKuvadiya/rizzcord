@@ -9,7 +9,6 @@ import { ServerSearch } from "./server-search";
 import { Croissant, Crown, Hash, Mic, Video, Wand } from "lucide-react";
 import { ServerSection } from "./server-section";
 import { ServerChannel } from "./server-channel";
-import { ServerMember } from "./server-member";
 import { ServerMemberSection } from "./server-memeber-section";
 
 interface serverSidebarProps {
@@ -56,6 +55,8 @@ export const ServerSidebar = async ({ serverId }: serverSidebarProps) => {
       },
     },
   });
+
+  console.log(server?.channels.length)
 
   const textChannels = server?.channels.filter(
     (channel) => channel.type === ChannelType.TEXT

@@ -80,9 +80,7 @@ const ManageMembersModal = () => {
         role : role
       }
 
-      console.log("ahoy")
       const response = await axios.patch(`/api/members/${memberId}` , dataPackage);
-      console.log("ahoyahoy")
 
       router.refresh();
       onOpen("manageMembers" , { server : response.data })

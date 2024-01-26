@@ -8,6 +8,7 @@ import ManageMembersModal from "../modals/manage-members-modal";
 import CreateChannel from "../modals/create-channel-modal";
 import LeaveServer from "../modals/leave-server-modal";
 import DeleteServer from "../modals/delete-server-modal";
+import DeleteChannel from "../modals/delete-channel-modal";
 
 export function ModalProvider() {
 
@@ -30,6 +31,7 @@ export function ModalProvider() {
             <CreateChannel />
             <LeaveServer />
             <DeleteServer />
+            <DeleteChannel />
         </>
     )
 }

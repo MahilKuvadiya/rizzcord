@@ -33,8 +33,8 @@ const DeleteServer = () => {
         const response = await axios.delete(`/api/servers/${server?.id}/delete-server`)
 
         onClose();
-        router.refresh();
         router.push("/")
+        router.refresh();
     } catch (error) {
         console.log("error from leave-server-modal",error)
     }finally{
