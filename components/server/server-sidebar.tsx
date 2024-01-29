@@ -6,27 +6,15 @@ import { redirect } from "next/navigation";
 import { ServerHeader } from "./server-header";
 import { ScrollArea } from "../ui/scroll-area";
 import { ServerSearch } from "./server-search";
-import { Croissant, Crown, Hash, Mic, Video, Wand } from "lucide-react";
 import { ServerSection } from "./server-section";
 import { ServerChannel } from "./server-channel";
 import { ServerMemberSection } from "./server-memeber-section";
+import { ChannelIconMap , MemberRoleIconMap } from "../icon-map";
+
 
 interface serverSidebarProps {
   serverId: string;
 }
-
-const iconMap = {
-  [ChannelType.TEXT]: <Hash className="mr-2 h-4 w-4" />,
-  [ChannelType.AUDIO]: <Mic className="mr-2 h-4 w-4" />,
-  [ChannelType.VIDEO]: <Video className="mr-2 h-4 w-4" />,
-};
-
-const roleIconMap = {
-  [MemberRole.LEADER]: <Crown className="h-4 w-4 mr-2" />,
-  [MemberRole.COLEADER]: <Croissant className="h-4 w-4 mr-2 " />,
-  [MemberRole.ELDER]: <Wand className="h-4 w-4 mr-2 " />,
-  [MemberRole.SPIDER]: null,
-};
 
 export const ServerSidebar = async ({ serverId }: serverSidebarProps) => {
   const profile = await currentProfile();
@@ -90,7 +78,7 @@ export const ServerSidebar = async ({ serverId }: serverSidebarProps) => {
                 data: textChannels?.map((channel) => ({
                   id: channel.id,
                   name: channel.channelName,
-                  icon: iconMap[channel.type],
+                  icon: ChannelIconMap[channel.type],
                 })),
               },
               {
@@ -99,7 +87,7 @@ export const ServerSidebar = async ({ serverId }: serverSidebarProps) => {
                 data: audioChannels?.map((channel) => ({
                   id: channel.id,
                   name: channel.channelName,
-                  icon: iconMap[channel.type],
+                  icon: ChannelIconMap[channel.type],
                 })),
               },
               {
@@ -108,7 +96,7 @@ export const ServerSidebar = async ({ serverId }: serverSidebarProps) => {
                 data: videoChannels?.map((channel) => ({
                   id: channel.id,
                   name: channel.channelName,
-                  icon: iconMap[channel.type],
+                  icon: ChannelIconMap[channel.type],
                 })),
               },
               {
@@ -117,7 +105,7 @@ export const ServerSidebar = async ({ serverId }: serverSidebarProps) => {
                 data: members?.map((member) => ({
                   id: member.id,
                   name: member.profile.userName,
-                  icon: roleIconMap[member.role],
+                  icon: MemberRoleIconMap[member.role],
                 })),
               },
             ]}

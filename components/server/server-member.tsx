@@ -4,18 +4,13 @@ import { cn } from "@/lib/utils";
 import { Member, MemberRole, Profile, Server } from "@prisma/client";
 import { Crown, Croissant, Wand } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
+import { MemberRoleIconMap } from "../icon-map";
 
 interface ServerMemberProps {
   member: Member & { profile: Profile };
   server: Server;
 }
 
-const roleIconMap = {
-  [MemberRole.LEADER]: <Crown className="h-4 w-4 mr-2" />,
-  [MemberRole.COLEADER]: <Croissant className="h-4 w-4 mr-2 " />,
-  [MemberRole.ELDER]: <Wand className="h-4 w-4 mr-2 " />,
-  [MemberRole.SPIDER]: null,
-};
 
 export const ServerMember = ({ member, server }: ServerMemberProps) => {
   const params = useParams();
@@ -23,7 +18,7 @@ export const ServerMember = ({ member, server }: ServerMemberProps) => {
 
 
   const onClick = ( ) => { 
-    router.push(`/servers/${server.id}/conversations/${member.profileId}`)
+    router.push(`/servers/${server.id}/conversations/${member.id}`)
   }
 
   return (
@@ -35,7 +30,7 @@ export const ServerMember = ({ member, server }: ServerMemberProps) => {
           "bg-pastel-third/20 text-pastel-fourth shadow-inner shadow-pastel-fourth"
       )}
     >
-      {roleIconMap[member.role]}
+      {MemberRoleIconMap[member.role]}
       <p>{member.profile.userName}</p>
     </button>
   );

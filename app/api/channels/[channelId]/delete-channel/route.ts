@@ -1,6 +1,7 @@
 import { currentProfile } from "@/lib/current-profile";
 import { db } from "@/lib/db";
 import { MemberRole } from "@prisma/client";
+import { channel } from "diagnostics_channel";
 import { NextResponse } from "next/server";
 
 export async function PATCH(
@@ -23,6 +24,8 @@ export async function PATCH(
         if(!server){
             return new NextResponse("Server prop missing" , { status : 400 })
         }
+
+        
 
         const response = await db.server.update({
             where : {

@@ -15,7 +15,8 @@ uploading the server image --> uploadthing
 
 state management --> zustand
 
-
+Search --> command from shadcn-ui ( internally 'cmdk')
+ 
 
 --> update the username in the local database
 --> Delete user disable

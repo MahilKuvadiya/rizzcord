@@ -11,7 +11,7 @@ const UserAvatar = ({
     className 
 } : UserAvatarProps) => {
     return (
-        <Avatar className={cn("h-7 w-7 md:h-10 md:w-10",className)}>
+        <Avatar className={cn(className)}>
             <AvatarImage src={src}/>
         </Avatar>
     )

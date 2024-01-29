@@ -36,13 +36,7 @@ import {
 import { MemberRole } from "@prisma/client";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-
-const roleIconMap = {
-  LEADER: <Crown className="h-4 w-4" />,
-  COLEADER: <Croissant className="h-4 w-4" />,
-  ELDER: <Wand className="h-4 w-4" />,
-  SPIDER: null,
-};
+import { MemberRoleIconMap } from "../icon-map";
 
 const ManageMembersModal = () => {
   const { onOpen, type, isOpen, onClose, data } = useModal();
@@ -126,11 +120,11 @@ const ManageMembersModal = () => {
           <div className="space-y-3">
             {sortedMembers.map((member) => (
               <div className="flex items-center gap-x-3" key={member.id}>
-                <UserAvatar src={member.profile.imageUrl} />
+                <UserAvatar src={member.profile.imageUrl} className="h-7 w-7 md:h-10 md:w-10"/>
                 <div className="flex flex-col gap-y-0">
                   <div className="text-sm font-bold flex items-center font-rilo gap-x-4">
                     {member.profile.userName}
-                    {roleIconMap[member.role]}
+                    {MemberRoleIconMap[member.role]}
                   </div>
                   <div className="text-xs flex items-center font-riloLight">
                     {member.profile.email}
