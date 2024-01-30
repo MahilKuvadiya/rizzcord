@@ -71,7 +71,7 @@ const CreateChannel = () => {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try{
       const dataPackage = {
-        serverId : params.serverId,
+        serverId : params?.serverId,
         values : values
       }
       await axios.patch('/api/channels',dataPackage)

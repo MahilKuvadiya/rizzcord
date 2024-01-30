@@ -5,14 +5,13 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { Clerk } from "@clerk/nextjs/server";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 
-
-import { riloSBold,riloLight } from "@/style/fonts/rilo";
+import { riloSBold, riloLight } from "@/style/fonts/rilo";
 import { jersey } from "@/style/fonts/jersey";
 import { Variable } from "lucide-react";
 import { ModalProvider } from "@/components/providers/modal-provider";
+import { SocketProvider } from "@/components/providers/socket-provider";
 
-const inter = Inter({ subsets: ["latin"] ,variable : '--font-inter'});
-
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
   title: "Straight to Rizzing",
@@ -27,16 +26,20 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
-        <body className={`${inter.variable} ${jersey.variable} ${riloSBold.variable} ${riloLight.variable}`}>
+        <body
+          className={`${inter.variable} ${jersey.variable} ${riloSBold.variable} ${riloLight.variable}`}
+        >
           <ThemeProvider
             attribute="class"
             defaultTheme="dark"
             enableSystem={false}
             storage-key="rizzcord-theme"
           >
-            <ModalProvider />
-            {children}
-            </ThemeProvider>
+            <SocketProvider>
+              <ModalProvider />
+              {children}
+            </SocketProvider>
+          </ThemeProvider>
         </body>
       </html>
     </ClerkProvider>
