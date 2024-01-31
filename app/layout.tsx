@@ -10,6 +10,7 @@ import { jersey } from "@/style/fonts/jersey";
 import { Variable } from "lucide-react";
 import { ModalProvider } from "@/components/providers/modal-provider";
 import { SocketProvider } from "@/components/providers/socket-provider";
+import { QueryProvider } from "@/components/providers/query-provider";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -37,7 +38,7 @@ export default function RootLayout({
           >
             <SocketProvider>
               <ModalProvider />
-              {children}
+              <QueryProvider>{children}</QueryProvider>
             </SocketProvider>
           </ThemeProvider>
         </body>
