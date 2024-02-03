@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormControl, FormField, FormItem } from "../ui/form";
-import { Plus, Smile } from "lucide-react";
+import { MoveUp, Plus, SendHorizonal, Smile } from "lucide-react";
 import { Input } from "../ui/input";
 import axios from "axios";
 import { useModal } from "@/hooks/modal-store";
@@ -49,6 +49,7 @@ const ChatInput = ({ apiUrl, serverId ,channelId, name, type }: ChatInputProps) 
     
         const res = await axios.post(apiUrl,dataPackage)
 
+        form.reset();
     }catch (error){
         console.log(error)
     }
@@ -80,9 +81,12 @@ const ChatInput = ({ apiUrl, serverId ,channelId, name, type }: ChatInputProps) 
                     placeholder={`Message ${type === "conversation" ? name : "#" + name}`}
                     {...field}
                   />
-                  <div className="absolute top-7 right-8 text-pastel-fourth">
-                    <Smile />
-                  </div>
+                  <button 
+                  type="button"
+                  onClick={form.handleSubmit(onSubmit)}
+                  className="absolute top-7 right-8 text-pastel-fourth">
+                    <SendHorizonal />
+                  </button>
                 </div>
               </FormControl>
             </FormItem>
