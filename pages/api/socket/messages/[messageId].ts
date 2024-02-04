@@ -15,27 +15,29 @@ export default async function handler(
   try {
     const profile = await currentProfilePages(req);
 
-    const { values } = req.body;
+    const { content } = req.body;
     
-    const messageId = req.query["messageId"]?.toString();
-    const serverId = req.query["serverId"]?.toString();
-    const channelId = req.query["channelId"]?.toString();
+    const { channelId , messageId , serverId } = req.query
 
     if (!profile) {
       return res.status(401).json({ body: "Unauthorized" });
     }
 
-    if (!channelId || !serverId) {
-      return res.status(400).json({ body: "Request props missing" });
+    if (!serverId) {
+      return res.status(400).json({ error: "Server ID missing" });
+    }
+
+    if (!channelId) {
+      return res.status(400).json({ error: "Channel ID missing" });
     }
 
     if (!messageId) {
-      return res.status(400).json({ body: "messageid missing" });
+      return res.status(400).json({ body: "messageId missing" });
     }
 
     const server = await db.server.findFirst({
       where: {
-        id: serverId,
+        id: serverId as string,
         members: {
           some: {
             profileId: profile.id,
@@ -57,8 +59,8 @@ export default async function handler(
 
     const channel = await db.channel.findFirst({
       where: {
-        id: channelId,
-        serverId: serverId,
+        id: channelId as string,
+        serverId: serverId as string,
       },
     });
 
@@ -76,8 +78,8 @@ export default async function handler(
 
     let message = await db.channelMessage.findFirst({
       where: {
-        id: messageId,
-        channelId: channelId,
+        id: messageId as string,
+        channelId: channelId as string,
       },
       include: {
         member: {
@@ -106,8 +108,8 @@ export default async function handler(
     if (req.method === "DELETE") {
       message = await db.channelMessage.update({
         where: {
-          id: messageId,
-          channelId: channelId,
+          id: messageId as string,
+          channelId: channelId as string,
         },
         data: {
           fileUrl: "",
@@ -131,11 +133,11 @@ export default async function handler(
 
       message = await db.channelMessage.update({
         where: {
-          id: messageId,
-          channelId: channelId,
+          id: messageId as string,
+          channelId: channelId as string,
         },
         data: {
-          content: values.content,
+          content: content,
         },
         include: {
           member: {
@@ -148,6 +150,7 @@ export default async function handler(
     }
 
     const updateKey = `chat:${channelId}:messages:update`;
+
 
     res?.socket?.server?.io?.emit(updateKey, message);
 

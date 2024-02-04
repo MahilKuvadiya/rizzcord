@@ -102,7 +102,7 @@ export const ChatItem = ({
         url: `${socketUrl}/${id}`,
         query: socketQuery,
       });
-      const res = await axios.patch(`${socketUrl}/${id}`, values);
+      const res = await axios.patch(url, values);
 
       form.reset();
       setIsEditing(false);
