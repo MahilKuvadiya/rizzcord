@@ -8,8 +8,8 @@ import { Fragment, useRef, ElementRef } from "react";
 import { ChatItem } from "./chat-item";
 import { format } from "date-fns";
 import { useChatSocket } from "@/hooks/use-chat-socket";
-import { useChatScroll } from "@/hooks/use-chat-scroll";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { useChatScroll } from "@/hooks/use-chat-scroll";
 
 const DTAE_FORMAT = "d MMM yyyy, HH:mm";
 
@@ -58,13 +58,13 @@ export const ChatMessages = ({
     });
 
   useChatSocket({ addKey, updateKey, queryKey });
-  // useChatScroll({
-  //   chatRef,
-  //   bottomRef,
-  //   loadMore: fetchNextPage,
-  //   shouldLoadMore: !isFetchingNextPage && !!hasNextPage,
-  //   count: data?.pages?.[0]?.items?.length ?? 0,
-  // });
+  useChatScroll({
+    chatRef,
+    bottomRef,
+    loadMore : fetchNextPage,
+    shouldLoadMore: !isFetchingNextPage && !!hasNextPage,
+    count : data?.pages?.[0].messages?.length ?? 0
+  })
 
   if (status === "pending") {
     return (
@@ -90,34 +90,26 @@ export const ChatMessages = ({
 
   return (
     <div ref={chatRef} className="flex-1 flex flex-col py-4 overflow-y-auto">
-      {/* {!hasNextPage && <div className="flex-1" />}
+      {!hasNextPage && <div className="flex-1" />}
       {!hasNextPage && <ChatWelcome name={name} type={type} />}
       {hasNextPage && (
-        <div className="flex items-center justify-center">
+        <div className="flex justify-center">
           {isFetchingNextPage ? (
-            <Loader className="h-6 w-6 text-pastel-third animate-spin my-4" />
+            <Loader className="flex items-center animate-spin" />
           ) : (
             <button
               onClick={() => fetchNextPage()}
-              className="text-pastel-third hover:text-pastel-fourth dark:text-dark-third text-xs my-4 dark:hover:text-dark-fourth transition"
+              className="text-xs flex items-center text-pastel-third font-jersey
+               bg-transparent border p-1 border-pastel-third rounded-md"
             >
-              Load previous message
+              Load Previous Messages
             </button>
           )}
         </div>
-      )} */}
-      <div className="mahil flex flex-col-reverse mt-auto ">
-        <InfiniteScroll
-          dataLength={data?.pages?.length || 0}
-          next={() =>fetchNextPage()}
-          inverse
-          hasMore
-          loader={
-            <Loader className="h-6 w-6 text-pastel-third animate-spin my-4" />
-          }
-        >
-          {data?.pages?.map((page, i) => (
-            <Fragment key={i}>
+      )}
+      <div id="scollableDiv" className="flex flex-col-reverse mt-auto ">
+        {data?.pages?.map((page, i) => (
+          <Fragment key={i}>
               {page.messages.map(
                 (message: ChannelMessageWithMembersWithProfile) => (
                   <div key={message.id}>
@@ -140,9 +132,8 @@ export const ChatMessages = ({
                   </div>
                 )
               )}
-            </Fragment>
-          ))}
-        </InfiniteScroll>
+          </Fragment>
+        ))}
       </div>
       <div ref={bottomRef} />
     </div>
