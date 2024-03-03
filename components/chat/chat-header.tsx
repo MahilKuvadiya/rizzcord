@@ -3,6 +3,7 @@ import { ChannelIconMap } from "../icon-map";
 import { MobileToggle } from "../mobile-toggle";
 import UserAvatar from "../user-avatar";
 import { SocketIndicatior } from "../socket-indicator";
+import { ChatVideoButton } from "./chat-video-button";
 
 interface ChatHeaderProps {
   serverId: string;
@@ -39,6 +40,9 @@ const ChatHeader = ({
         </div>
       )}
       <div className="ml-auto flex items-center">
+        {type === 'conversation' && (
+          <ChatVideoButton />
+        )}
         <SocketIndicatior />
       </div>
     </div>

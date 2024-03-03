@@ -80,6 +80,7 @@ const channelIdPage = async ({
         video={false}
         audio={true}
         name={channel.channelName}
+        type="conversation"
         />
       )}
       {channel.type === ChannelType.VIDEO && (
@@ -88,6 +89,7 @@ const channelIdPage = async ({
         video={true}
         audio={true}
         name={channel.channelName}
+        type="conversation"
         />
       )}
     </div>
