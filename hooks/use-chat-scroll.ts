@@ -39,7 +39,7 @@ export const useChatScroll = ({
 
       const scrollTop = topDiv?.scrollTop;
 
-      if (scrollTop <= 100 && shouldLoadMore) {
+      if (scrollTop <= 200 && shouldLoadMore) {
         setPreviousHeight(topDiv.scrollHeight);
         console.log("previous scroll   " + previousHeight);
         loadMore();

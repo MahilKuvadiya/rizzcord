@@ -23,7 +23,7 @@ const ChatHeader = ({
     <div
       className="w-full text-md font-rilo font-semibold px-3 flex items-center h-12 border-pastel-third/60
         dark:border-dark-third/60 border-b-2 bg-pastel-primary transition shadow-md
-        dark:bg-dark-primary "
+        dark:bg-dark-primary"
     >
       <MobileToggle serverId={serverId} />
       {type === "channel" && (

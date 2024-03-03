@@ -11,8 +11,7 @@ import { useModal } from "@/hooks/modal-store";
 
 interface ChatInputProps {
   apiUrl: string;
-  serverId : string;
-  channelId : string ;
+  query : Record<string,any>;
   name: string;
   type: "conversation" | "channel";
 }
@@ -21,12 +20,8 @@ const formSchema = z.object({
   content: z.string().min(1),
 });
 
-const ChatInput = ({ apiUrl, serverId ,channelId, name, type }: ChatInputProps) => {
+const ChatInput = ({ apiUrl, query, name, type }: ChatInputProps) => {
 
-  const query : Record<string, any> = {
-    serverId : serverId,
-    channelId : channelId
-  }
 
   const { onOpen } = useModal()
 
@@ -43,8 +38,7 @@ const ChatInput = ({ apiUrl, serverId ,channelId, name, type }: ChatInputProps) 
     try{
         const dataPackage = {
             values : values,
-            serverId : serverId,
-            channelId : channelId
+            query : query
         }
     
         const res = await axios.post(apiUrl,dataPackage)

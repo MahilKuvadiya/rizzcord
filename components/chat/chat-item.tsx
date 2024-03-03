@@ -31,6 +31,7 @@ interface ChatItemProps {
   currentmember: Member;
   socketUrl: string;
   socketQuery: Record<string, string>;
+  type : string;
 }
 
 const formSchema = z.object({
@@ -46,6 +47,7 @@ export const ChatItem = ({
   isDeleted,
   isUpdated,
   currentmember,
+  type,
   socketUrl,
   socketQuery,
 }: ChatItemProps) => {
@@ -126,8 +128,8 @@ export const ChatItem = ({
 
   return (
     <div
-      className="group relative items-center flex m-4 md:max-w-[75%] bg-pastel-secondary/20 md:hover:bg-pastel-secondary/40 transition
-       my-1.5 rounded-md p-3"
+      className={cn("group relative items-center flex m-4 md:max-w-[75%] max-w-[80%] bg-pastel-secondary/20 md:hover:bg-pastel-secondary/40 transition my-1.5 rounded-md p-3",
+      currentmember.id === member.id && type === 'conversation' && 'ml-auto')}
     >
       <div className="group flex gap-x-2 items-start w-full text-pastel-fourth dark:text-dark-fourth">
         <div

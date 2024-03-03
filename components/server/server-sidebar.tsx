@@ -184,7 +184,6 @@ export const ServerSidebar = async ({ serverId }: serverSidebarProps) => {
           </div>
         )}
       </ScrollArea>
-      server sidebar
     </div>
   );
 };

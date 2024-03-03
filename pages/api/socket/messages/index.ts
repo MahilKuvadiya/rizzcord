@@ -14,8 +14,11 @@ export default async function handler (
     try{
         const profile = await currentProfilePages(req);
         
-        const { serverId , channelId , values } =  req.body
+        const {query , values } =  req.body
         let { content , fileUrl } = values
+
+        const serverId = query['serverId'];
+        const channelId = query['channelId'];
 
         if(!content && fileUrl){
             content = fileUrl
