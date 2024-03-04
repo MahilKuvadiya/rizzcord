@@ -93,7 +93,7 @@ export const ChatItem = ({
     form.reset({
       content: content,
     });
-  }, [content]);
+  }, [form,content]);
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     if (values.content === content) {

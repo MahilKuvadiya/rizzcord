@@ -45,7 +45,7 @@ export const MediaRoom = ({ chatId, video, audio, name, type }: MediaRoomProps) 
     if(type === 'conversation'){
       setConnect(true);
     }
-  },[])
+  },[type])
 
   const onConnect = () => {
     setConnect(true);
