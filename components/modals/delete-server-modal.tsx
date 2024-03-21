@@ -44,7 +44,7 @@ const DeleteServer = () => {
 
   return (
     <Dialog open = {isModalOpen} onOpenChange={onClose}>
-      <DialogContent className="space-y-0 bg-pastel-primary text-pastel-fourth p-0 w-[25%]">
+      <DialogContent className="space-y-0 bg-pastel-primary text-pastel-fourth p-0 md:w-[25%]">
         <DialogHeader className="pt-6 px-6">
           <DialogTitle className="text-center text-2xl font-jersey">
             Delete server

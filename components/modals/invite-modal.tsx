@@ -59,7 +59,7 @@ export const InviteModal = () => {
 
   return (
     <Dialog open = {isModalOpen} onOpenChange={onClose}>
-      <DialogContent className="space-y-0 bg-pastel-primary text-pastel-fourth p-0 w-[30%]">
+      <DialogContent className="space-y-0 bg-pastel-primary text-pastel-fourth p-0">
         <DialogHeader className="pt-6 px-6">
           <DialogTitle className="text-center text-2xl font-jersey">
             Invite friends
@@ -75,9 +75,9 @@ export const InviteModal = () => {
           <div className="flex items-center mt-2 gap-x-2">
             <Input 
             disabled={isLoading}
-            className="bg-pastel-secondary focus-visible:ring-0 text-pastel-fourth focus-visible:ring-offset-0"
+            className="bg-pastel-secondary focus-visible:ring-0 text-pastel-fourth focus-visible:ring-offset-0 border border-pastel-fourth"
             value={inviteUrl}/>
-            <Button size="icon" disabled={isLoading} onClick={onCopy} className="bg-transparent hover:bg-pastel-secondary">
+            <Button size="icon" disabled={isLoading} onClick={onCopy} className="bg-transparent hover:bg-pastel-secondary border border-pastel-fourth">
               {isCopied ? <Check className="w-4 h-4 text-pastel-fourth"/> : <Copy className="w-4 h-4 text-pastel-fourth"/>}
               
             </Button>

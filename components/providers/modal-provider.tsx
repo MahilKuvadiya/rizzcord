@@ -12,6 +12,7 @@ import DeleteChannel from "../modals/delete-channel-modal";
 import EditChannelModal from "../modals/edit-channel-modal";
 import MessageFileModal from "../modals/message-file-modal";
 import DeleteMessage from "../modals/delete-message-modal";
+import { JoinServerModal } from "../modals/join-server-modal";
 
 export function ModalProvider() {
 
@@ -38,6 +39,7 @@ export function ModalProvider() {
             <EditChannelModal />
             <MessageFileModal />
             <DeleteMessage />
+            <JoinServerModal />
         </>
     )
 }

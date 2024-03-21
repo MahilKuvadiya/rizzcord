@@ -3,7 +3,7 @@ import { create } from 'zustand'
 
 export type ModalType = 'createServer' | 'invite' | 'editServer' | 'manageMembers'
  | 'createChannel' | 'leaveServer' | 'deleteServer' | 'deleteChannel' | 'editChannel'
- | 'messageFile' | 'deleteMessage';
+ | 'messageFile' | 'deleteMessage' | 'joinServer';
 
 interface ModalData { 
     server? :Server,
