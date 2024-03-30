@@ -8,6 +8,7 @@ import { MoveUp, Plus, SendHorizonal, Smile } from "lucide-react";
 import { Input } from "../ui/input";
 import axios from "axios";
 import { useModal } from "@/hooks/modal-store";
+import qs from "query-string";
 
 interface ChatInputProps {
   apiUrl: string;
@@ -38,10 +39,14 @@ const ChatInput = ({ apiUrl, query, name, type }: ChatInputProps) => {
     try{
         const dataPackage = {
             values : values,
-            query : query
         }
+
+        const newUrl = qs.stringifyUrl({
+          url : apiUrl || "",
+          query : query
+        })
     
-        const res = await axios.post(apiUrl,dataPackage)
+        const res = await axios.post(newUrl,dataPackage)
 
         form.reset();
     }catch (error){

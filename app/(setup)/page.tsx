@@ -7,7 +7,7 @@ import { db } from "@/lib/db";
 import { initialProfile } from "@/lib/initial-profile";
 import { UserButton, UserProfile, redirectToSignIn } from "@clerk/nextjs";
 import { ChevronsLeft, ChevronsRight, Home } from "lucide-react";
-import { redirect } from "next/navigation";
+import { RedirectType, redirect } from "next/navigation";
 
 const page = async () => {
   const profile = await initialProfile();
@@ -16,8 +16,6 @@ const page = async () => {
     return (
       <HomePageModal />
     );
-  }else{
-    console.log("profile exists " + profile.email)
   }
 
   const servers = await db.server
@@ -36,7 +34,7 @@ const page = async () => {
       console.log("server found")
     });
 
-  if (servers) return redirect(`/servers/${servers.id}`);
+  if (servers) return redirect(`/servers/${servers.id}`, RedirectType.replace);
 
   return (
       <HomePageModal />

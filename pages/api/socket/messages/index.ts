@@ -16,9 +16,10 @@ export default async function handler (
         
         const {query , values } =  req.body
         let { content , fileUrl } = values
+        const { serverId , channelId } = req.query
 
-        const serverId = query['serverId'];
-        const channelId = query['channelId'];
+        // const serverId = query['serverId'];
+        // const channelId = query['channelId'];
 
         if(!content && fileUrl){
             content = fileUrl
@@ -38,7 +39,7 @@ export default async function handler (
 
         const server = await db.server.findUnique({
             where : {
-                id : serverId
+                id : serverId as string
             },
             include : { 
                 members : true
@@ -51,8 +52,8 @@ export default async function handler (
 
         const channel = await db.channel.findUnique({
             where : {
-                id : channelId,
-                serverId : serverId
+                id : channelId as string,
+                serverId : serverId as string
             }
         })
 

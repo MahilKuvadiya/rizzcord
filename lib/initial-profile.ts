@@ -6,9 +6,7 @@ export const initialProfile = async () => {
   const { userId } = auth();
 
   if (!userId) {
-    return redirect("/sign-in");
-  } else {
-    console.log("\n\n" + userId + "userID\n\n");
+    return null;
   }
 
   const profile = await db.profile.findUnique({

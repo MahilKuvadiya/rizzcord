@@ -26,6 +26,7 @@ import { Button } from "@/components/ui/button";
 import { FileUpload } from "../file-upload";
 import { useRouter } from "next/navigation";
 import { useModal } from "@/hooks/modal-store";
+import qs from "query-string";
 
 
 const formSchema = z.object({
@@ -64,11 +65,15 @@ const MessageFileModal = () => {
 
         const dataPackage = {
             values : values,
-            serverId : serverId,
-            channelId : channelId
         }
 
-      await axios.post(apiUrl || "",dataPackage)
+          const newUrl = qs.stringifyUrl({
+            url : apiUrl || "",
+            query : query
+          })
+        
+        
+      await axios.post(newUrl || "",dataPackage)
 
       form.reset();
       router.refresh();
@@ -85,10 +90,10 @@ const MessageFileModal = () => {
 
   return (
     <Dialog open = {isModalOpen} onOpenChange={handleClose}>
-      <DialogContent className="space-y-0 bg-pastel-primary text-pastel-fourth p-0 w-[30%]">
+      <DialogContent className="space-y-0 bg-pastel-primary text-pastel-fourth p-0 md:w-[30%]">
         <DialogHeader className="pt-6 px-6">
           <DialogTitle className="text-center text-2xl font-jersey">
-            Add an attachments
+            Add an attachment
           </DialogTitle>
           <hr className=" border-pastel-fourth border-1" />
           <DialogDescription className="font-rilo text-center">

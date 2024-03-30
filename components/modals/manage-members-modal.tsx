@@ -106,7 +106,7 @@ const ManageMembersModal = () => {
 
   return (
     <Dialog open={isModalOpen} onOpenChange={onClose}>
-      <DialogContent className="space-y-0 bg-pastel-primary text-pastel-fourth pt-0 pb-0 w-[30%]">
+      <DialogContent className="space-y-0 bg-pastel-primary text-pastel-fourth pt-0 pb-0 md:w-[30%]">
         <DialogHeader className="pt-6 px-6">
           <DialogTitle className="text-center text-2xl font-jersey">
             Manage Spiders

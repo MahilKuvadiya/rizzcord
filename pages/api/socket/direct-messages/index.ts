@@ -16,8 +16,7 @@ export default async function handler (
         
         const { query , values } =  req.body
         let { content , fileUrl } = values
-
-        const conversationId = query['conversationId'];
+        const { conversationId } = req.query
 
         if(!content && fileUrl){
             content = fileUrl
@@ -34,7 +33,7 @@ export default async function handler (
 
         const conversation = await db.conversation.findFirst({
             where : {
-                id : conversationId,
+                id : conversationId as string,
                 OR : [
                     {
                         memberOne : {
