@@ -2,11 +2,14 @@ import ChatHeader from "@/components/chat/chat-header";
 import ChatInput from "@/components/chat/chat-input";
 import { ChatMessages } from "@/components/chat/chat-messages";
 import { MediaRoom } from "@/components/media-room";
+import { Button } from "@/components/ui/button";
 import { currentProfile } from "@/lib/current-profile";
 import { db } from "@/lib/db";
 import { redirectToSignIn } from "@clerk/nextjs";
 import { ChannelType } from "@prisma/client";
+import { ArrowUp } from "lucide-react";
 import { redirect } from "next/navigation";
+import TempComp from "./temp";
 
 const channelIdPage = async ({
   params,
@@ -41,6 +44,15 @@ const channelIdPage = async ({
 
   return (
     <div className="bg-pastel-primary dark:bg-dark-primary flex flex-col h-full">
+      {
+        profile.userName === 'guest' && (
+        
+          <div className="fixed inset-0 z-50 backdrop:blur-lg opacity-90"> 
+            <TempComp />
+          </div>
+
+        )
+      }
       <ChatHeader
         serverId={params.serverId}
         name={channel.channelName}
